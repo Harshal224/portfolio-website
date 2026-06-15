@@ -452,7 +452,7 @@
         // Environment configuration
         const API_BASE_URL = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' 
             ? 'http://localhost:3000' 
-            : 'https://portfolio-backend-cs6y.onrender.com/api';
+            : 'https://portfolio-backend-cs6y.onrender.com';
 
         // Contact Form logic
         const form = document.getElementById("contactForm");
@@ -466,7 +466,7 @@
             const data = Object.fromEntries(formData);
 
             try {
-                const res = await fetch(`${API_BASE_URL}/send-email`, {
+                const res = await fetch(`${API_BASE_URL}/api/send-email`, {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify(data)
