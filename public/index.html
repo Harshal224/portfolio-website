@@ -12,6 +12,11 @@
     <meta name="author" content="Harshal Bankar">
     <link rel="canonical" href="https://harshalbankar.web.app/">
 
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="./favicon.ico?v=2">
+    <link rel="icon" type="image/png" sizes="32x32" href="./favicon.png?v=2">
+    <link rel="apple-touch-icon" sizes="180x180" href="./favicon.png?v=2">
+
     <!-- Open Graph / LinkedIn / Facebook / Discord -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://harshalbankar.web.app/">
@@ -94,7 +99,7 @@
                 <a href="#experience">Experience</a>
                 <a href="#projects">Projects</a>
                 <a href="#contact">Contact</a>
-                <a href="HarshalBankarCV3.pdf" class="btn btn-outline btn-sm" download>Resume</a>
+                <a href="harshal_bankar-reactjs.pdf" class="btn btn-outline btn-sm" download>Resume</a>
                 <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark mode theme"><svg class="icon"><use href="#icon-moon"></use></svg></button>
             </div>
         </div>
@@ -109,7 +114,7 @@
                 <p class="hero-desc">Building scalable web applications using Node.js, Express.js, MongoDB and modern web technologies.</p>
                 <div class="hero-cta">
                     <a href="#projects" class="btn btn-primary">View Projects</a>
-                    <a href="HarshalBankarCV3.pdf" class="btn btn-outline" download>Download Resume</a>
+                    <a href="harshal_bankar-reactjs.pdf" class="btn btn-outline" download>Download Resume</a>
                 </div>
                 <div class="social-icons">
                     <a href="https://github.com/Harshal224" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile"><svg class="icon"><use href="#icon-github"></use></svg></a>
@@ -143,7 +148,7 @@
             </div>
             <div class="stat-card glass">
                 <h3>1 Year</h3>
-                <p>Internship Experience</p>
+                <p>Experience</p>
             </div>
         </section>
 
@@ -194,9 +199,9 @@
             <div class="timeline">
                 <div class="timeline-item glass">
                     <div class="timeline-dot"></div>
-                    <h3>ReactJS Intern</h3>
-                    <h4>Sumago Infotech Pvt. Ltd.</h4>
-                    <p class="timeline-date">2023 - 2024</p>
+                    <h3>Fullstack Developer</h3>
+                    <h4>SoftGrid Info Pvt. Ltd.</h4>
+                    <p class="timeline-date">2025 - 2026</p>
                     <p>Developed interactive UI components and collaborated on frontend web applications using ReactJS and modern web practices.</p>
                 </div>
                 <div class="timeline-item glass">
@@ -292,8 +297,8 @@
                     <h2>Let's build something together.</h2>
                     <p>I'm currently available for freelance work and full-time opportunities. Reach out if you want to connect!</p>
                     <div class="contact-details">
-                        <p><svg class="icon"><use href="#icon-envelope"></use></svg> harshal@example.com</p>
-                        <p><svg class="icon"><use href="#icon-map-marker"></use></svg> Maharashtra, India</p>
+                        <p><svg class="icon"><use href="#icon-envelope"></use></svg>contact.harshal224@gmail.com</p>
+                        <p><svg class="icon"><use href="#icon-map-marker"></use></svg>Pune, Maharashtra, India</p>
                     </div>
                 </div>
                 <div class="contact-form">
@@ -444,6 +449,11 @@
             }
         });
 
+        // Environment configuration
+        const API_BASE_URL = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' 
+            ? 'http://localhost:3000' 
+            : 'https://portfolio-backend-cs6y.onrender.com/api';
+
         // Contact Form logic
         const form = document.getElementById("contactForm");
         form.addEventListener("submit", async (e) => {
@@ -456,7 +466,7 @@
             const data = Object.fromEntries(formData);
 
             try {
-                const res = await fetch("http://localhost:3000/send-email", {
+                const res = await fetch(`${API_BASE_URL}/send-email`, {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify(data)
